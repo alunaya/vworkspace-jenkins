@@ -1,0 +1,1 @@
+docker push 192.168.0.3:5000/vworkspace
