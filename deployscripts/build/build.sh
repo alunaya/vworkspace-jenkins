@@ -1,7 +1,7 @@
 rm -rf ~/build-temp
 mkdir -p ~/build-temp
-cp -a ../../ ~/build-temp
 cp -a ./ ~/build-temp
+cp -a ./deployscripts/build/ ~/build-temp
 cd ~/build-temp
 git submodule update --init
 docker build \
