@@ -1,5 +1,5 @@
 # DO NOT EDIT: created by update.sh from Dockerfile-debian.template
-FROM 192.168.0.3:5000/php AS nextcloud-prebuild
+FROM php:7.4-apache-buster AS nextcloud-prebuild
 RUN pear config-set http_proxy http://10.61.11.42:3128
 
 FROM nextcloud-prebuild AS nextcloud
