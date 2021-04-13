@@ -1,9 +1,39 @@
-version: "3.9"
+version: "3.7"
 services:
   vworkspace:
-    images: 192.168.0.3:5000/vworkspace:latest
-      restart: always
-      ports:
-        - "80:80"
-      volumes:
-          - nextcloud:/var/www/html
+    image: 192.168.0.3:5000/vworkspace:latest
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - type: volume
+        source: vworkspace
+        target: /var/www/html
+    networks:
+      vnet:
+        aliases:
+          - vworkspace
+
+  vdatabase:
+    image: mariadb:10.5.9-focal
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test123
+    ports:
+      - 3306:3306
+    volumes:
+      - type: volume
+        source: vdatabase
+        target: /var/lib/mysql
+    networks:
+      vnet:
+        aliases:
+          - vdatabase
+
+
+volumes:
+  vworkspace:
+  vdatabase:
+
+networks:
+  vnet:
