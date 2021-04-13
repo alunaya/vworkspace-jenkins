@@ -1,3 +1,5 @@
+cd $(dirname $0)
+cd ../../
 cp -a ./deployscripts/build/* ./
 git submodule update --init
 ls -la

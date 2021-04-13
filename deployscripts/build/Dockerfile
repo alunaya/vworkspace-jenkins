@@ -148,6 +148,7 @@ RUN set -ex; \
     rm -rf /var/lib/apt/lists/*
 
 COPY cron.sh entrypoint.sh upgrade.exclude /
+RUN chmod +x /cron.sh /entrypoint.sh /upgrade.exclude
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
